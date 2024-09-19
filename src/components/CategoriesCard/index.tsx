@@ -33,14 +33,12 @@ import {
   DeleteIcon,
 } from "../../assets/icons/buttons";
 
-// Definindo o tipo para as props
 interface CardProps {
   id: string;
   name: string;
   setShowCard: Dispatch<SetStateAction<boolean>>;
 }
 
-// Componente funcional com props
 const CategoryCard: React.FC<CardProps> = ({ id, name, setShowCard }) => {
   const dispatch = useAppDispatch();
   const [editControler, setEditControler] = useState<boolean>(false);
@@ -116,9 +114,7 @@ const CategoryCard: React.FC<CardProps> = ({ id, name, setShowCard }) => {
       </CardWrapper>
       {modalControler && (
         <CategoriesModal
-          onConfirm={async () =>
-            await DeleteButtonClick(id, setShowCard, dispatch)
-          }
+          onConfirm={async () => await DeleteButtonClick(id, setShowCard)}
           onCancel={() => setModalControler(false)}
         />
       )}

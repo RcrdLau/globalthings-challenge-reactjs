@@ -1,6 +1,3 @@
 import { heroesSlice } from "./slice";
 
-export const {
-  heroesSelectData,
-  // heroSelectedItem
-} = heroesSlice.actions;
+export const { heroesSelectData, heroSelectedItem } = heroesSlice.actions;

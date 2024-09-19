@@ -10,12 +10,15 @@ import {
   Form,
 } from "../CategoriesBody/styles";
 import { SearchCategoryAPI } from "../CategoriesBody/utils";
-import { IHeroesList, LoadHeroesData } from "./utils";
+import { IHeroesList, LoadHeroesData, SearchHeroAPI } from "./utils";
 import ButtonNewHero from "../ButtonNewHero";
+import HeroCard from "../HeroCard";
 
 const HeroesBody: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { heroesSelectData } = useAppSelector((store) => store.heroes);
+  const { heroesSelectData, heroSelectedItem } = useAppSelector(
+    (store) => store.heroes
+  );
   const [selectedHero, setSelectedHero] = useState<string>("");
   const [showCard, setShowCard] = useState<boolean>(false);
   console.log("heroesSelectData: ", heroesSelectData);
@@ -33,7 +36,7 @@ const HeroesBody: React.FC = () => {
               onChange={(e) => setSelectedHero(e.target.value)}
             >
               <option value="" disabled hidden>
-                Select a category
+                Select a hero
               </option>
               {heroesSelectData.map((heroesItem: IHeroesList) => (
                 <option key={heroesItem.id} value={heroesItem.id}>
@@ -44,22 +47,23 @@ const HeroesBody: React.FC = () => {
             <SearchButton
               $disabled={selectedHero === ""}
               disabled={selectedHero === ""}
-              onClick={() =>
-                SearchCategoryAPI(selectedHero, dispatch, setShowCard)
-              }
+              onClick={() => SearchHeroAPI(selectedHero, dispatch, setShowCard)}
             >
               🔍
             </SearchButton>
           </Form>
           <ButtonNewHero buttonText={"Hero"} />
         </FormContainer>
-        {/* {showCard && (
-          <CategoryCard
-            id={String(categoriesSelectedItem.id)}
-            name={categoriesSelectedItem.name}
+        {showCard && (
+          <HeroCard
+            id={String(heroSelectedItem.id)}
+            name={heroSelectedItem.name}
             setShowCard={setShowCard}
+            active={heroSelectedItem.active}
+            category={heroSelectedItem.categoryName}
+            categoryId={String(heroSelectedItem.categoryId)}
           />
-        )} */}
+        )}
       </CategoryWrapper>
     </CategoryContainer>
   );

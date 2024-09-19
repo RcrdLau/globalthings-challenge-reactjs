@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-// Definindo o botão com estilo
 export const NewCategoryButton = styled.button`
   display: flex;
   align-items: center;

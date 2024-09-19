@@ -9,7 +9,9 @@ import {
   HeaderNavList,
   HeaderNavListItem,
   HeaderNavButton,
+  LogoWrapper,
 } from "./styles";
+import logo from "../../assets/images/logo.png";
 
 const HeaderComponent = () => {
   const location = useLocation();
@@ -21,7 +23,9 @@ const HeaderComponent = () => {
       <HeaderContent>
         <HeaderNav>
           <LogoContainer>
-            <LogoImage>Hero</LogoImage>
+            <LogoWrapper>
+              <LogoImage src={logo} />
+            </LogoWrapper>
           </LogoContainer>
           <HeaderNavList>
             <HeaderNavListItem>

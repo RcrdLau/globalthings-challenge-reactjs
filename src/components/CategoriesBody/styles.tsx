@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-// Container geral do header
 export const CategoryContainer = styled.section`
   background-color: white;
   width: 100%;
@@ -11,6 +10,7 @@ export const CategoryContainer = styled.section`
   justify-content: flex-start;
   flex-direction: column;
 `;
+
 export const CategoryWrapper = styled.div`
   background-color: white;
   width: 80%;

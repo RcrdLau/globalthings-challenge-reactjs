@@ -1,60 +1,49 @@
 import axios from "axios";
-import { accessKeyAPI, baseUrlAPI } from "../../constants/baseUrlAPi";
-import { LoadCategoryData, SearchCategoryAPI } from "../CategoriesBody/utils";
 import { Dispatch } from "@reduxjs/toolkit";
-import { Dispatch as ReactDispatch, SetStateAction } from "react";
+import { accessKeyAPI, baseUrlAPI } from "../../constants/baseUrlAPi";
 import { toast } from "../Toast";
+import { Dispatch as ReactDispatch, SetStateAction } from "react";
+import { LoadHeroesData, SearchHeroAPI } from "../HeroesBody/utils";
 
-export const CancelEditButtonClick = (
-  setEditControler: React.Dispatch<React.SetStateAction<boolean>>,
-  setNameValue: React.Dispatch<React.SetStateAction<string>>,
-  name: string
-): void => {
-  setEditControler(false);
-  setNameValue(name);
-};
-
-export const EditButtonClick = (
-  setEditControler: React.Dispatch<React.SetStateAction<boolean>>
-) => {
-  setEditControler(true);
-};
-
-export const UpdateCategoryName = async (
+export const UpdateHero = async (
   cardId: string,
   cardNameUpdated: string,
+  categoryId: string,
+  isChecked: boolean,
   setEditControler: React.Dispatch<React.SetStateAction<boolean>>,
   dispatch: Dispatch,
   setShowCard: ReactDispatch<SetStateAction<boolean>>
 ) => {
-  const url = "Category/" + cardId;
+  const url = "Heroes/" + cardId;
 
-  const updatedCategoryName = {
+  const updatedHeroName = {
     Id: Number(cardId),
     Name: cardNameUpdated,
+    CategoryId: Number(categoryId),
+    Active: isChecked,
   };
 
   await axios
-    .put(baseUrlAPI + url, updatedCategoryName, {
+    .put(baseUrlAPI + url, updatedHeroName, {
       headers: {
         AccessKey: accessKeyAPI,
       },
     })
     .then((res: any) => {
       setEditControler(false);
-      LoadCategoryData(dispatch);
-      SearchCategoryAPI(cardId, dispatch, setShowCard);
+      LoadHeroesData(dispatch);
+      SearchHeroAPI(cardId, dispatch, setShowCard);
     })
     .catch((error: any) => {
       toast({ type: "error", text: error.response.data.Message });
     });
 };
 
-export const DeleteButtonClick = async (
+export const DeleteHeroButtonClick = async (
   cardId: string,
   setShowCard: ReactDispatch<SetStateAction<boolean>>
 ) => {
-  const url = "Category/" + cardId;
+  const url = "Heroes/" + cardId;
 
   await axios
     .delete(baseUrlAPI + url, {

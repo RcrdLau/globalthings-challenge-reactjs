@@ -9,6 +9,9 @@ export const CardText = styled.p`
   flex: 1;
   min-width: 220px;
 `;
+export const CardCategoryText = styled(CardText)`
+  padding: 10px 0;
+`;
 
 export const CardInput = styled.input`
   font-family: Arial, sans-serif;
@@ -94,9 +97,9 @@ export const IconButton = styled.div`
 `;
 
 export const EditButton = styled(IconButton)`
-  background-color: #d1ecf1; /* Fundo azul claro */
+  background-color: #d1ecf1;
   svg {
-    fill: #0c5460; /* Cor do ícone caneta */
+    fill: #0c5460;
   }
 
   &:hover {
@@ -105,9 +108,9 @@ export const EditButton = styled(IconButton)`
 `;
 
 export const DeleteButton = styled(IconButton)`
-  background-color: #f8d7da; /* Fundo vermelho claro */
+  background-color: #f8d7da;
   svg {
-    fill: #721c24; /* Cor do ícone lixeira */
+    fill: #721c24;
   }
 
   &:hover {
@@ -116,9 +119,9 @@ export const DeleteButton = styled(IconButton)`
 `;
 
 export const ConfirmButton = styled(IconButton)`
-  background-color: #d4edda; /* Fundo verde claro */
+  background-color: #d4edda;
   svg {
-    fill: #28a745; /* Cor do ícone de confirmação */
+    fill: #28a745;
   }
 
   &:hover {
@@ -127,9 +130,9 @@ export const ConfirmButton = styled(IconButton)`
 `;
 
 export const CancelButton = styled(IconButton)`
-  background-color: #f8d7da; /* Fundo vermelho claro */
+  background-color: #f8d7da;
   svg {
-    fill: #dc3545; /* Cor do ícone de cancelamento */
+    fill: #dc3545;
   }
 
   &:hover {

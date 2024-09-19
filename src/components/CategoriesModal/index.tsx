@@ -20,7 +20,7 @@ export const CategoriesModal: React.FC<ModalProps> = ({
   return (
     <Overlay>
       <ModalContainer>
-        <Title>Deseja realmente excluir?</Title>
+        <Title>Do you really want to delete it?</Title>
         <ButtonsContainer>
           <Button $confirm onClick={onConfirm}>
             <ConfirmIcon />

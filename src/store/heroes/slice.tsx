@@ -4,14 +4,20 @@ import { IHeroesList } from "../../components/HeroesBody/utils";
 
 type IHeroesProps = {
   heroesSelectData: IHeroesList[];
-//   heroSelectedItem: IHeroesList;
+  heroSelectedItem: IHeroesList;
 };
 
 const heroesInitialState: IHeroesProps = {
-    heroesSelectData: [
-        { id: 0, name: "", active: false, categoryId: 0, categoryName: "" },
-    ],
-    // heroSelectedItem: undefined
+  heroesSelectData: [
+    { id: 0, name: "", active: false, categoryId: 0, categoryName: "" },
+  ],
+  heroSelectedItem: {
+    id: 0,
+    name: "",
+    active: false,
+    categoryId: 0,
+    categoryName: "",
+  },
 };
 
 export const heroesSlice = createSlice({
@@ -21,8 +27,8 @@ export const heroesSlice = createSlice({
     heroesSelectData: (state, action: PayloadAction<IHeroesList[]>) => {
       state.heroesSelectData = action.payload;
     },
-    // heroSelectedItem: (state, action: PayloadAction<IHeroesList>) => {
-    //   state.heroSelectedItem = action.payload;
-    // },
+    heroSelectedItem: (state, action: PayloadAction<IHeroesList>) => {
+      state.heroSelectedItem = action.payload;
+    },
   },
 });
